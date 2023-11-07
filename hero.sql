@@ -145,8 +145,7 @@ VALUES
     (9, 9, 109),  -- Leomord has Blade Armor
     (10, 10, 110);  -- Chou has Feather of Heaven
 
--- 3 Add another column in the item table named item_price.
---Set the column Price data type to Decimal with 2 decimal points
+-- 3 Add another column in the item table named item_price. Set the column Price data type to Decimal with 2 decimal points
 ALTER TABLE item
 ADD item_price DECIMAL (10,2);
 
@@ -162,4 +161,11 @@ DELETE FROM public.heroitem
 WHERE hero_id = 1;
 
 COMMIT;
+
+--5
+--List the player names and their corresponding hero names that are actively in use during gameplay, excluding those with inactive heroes.
+SELECT p.player_name, h.hero_name
+FROM public.player p
+JOIN public.hero h ON p.hero_id = h.hero_id
+WHERE h.is_active = true;
 
